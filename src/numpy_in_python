@@ -1,0 +1,457 @@
+**Chapter-1: Introduction**
+
+ Why was Numpy needed?
+ Before Numpy people were facing problems like:
+ 1. Python is too slow for large datasets.
+ 2. Lists was also not so efficient for very large datasets.
+
+ Seeing this Travis Oliphant created Numpy in 2005 as the solution to these problems.
+
+ Main uses of Numpy were:
+ 1. To handle large numbers.
+ 2. Instead of lists and slow loops special arrays were introduced in Numpy.
+
+ Numpy stands for Numerical Python.   
+
+ Features of Numpy:
+ 1. Speed (50 to 100 times faster than more lists and loops).
+ 2. Less memory usage.
+ 3. Easy math operations.
+ 4. Used in AI,DS and DA.
+
+ Usage of Numpy:
+ 1. Data Science
+ 2. ML(AI)
+ 3. Stock Market & Finance
+ 4. Medical Research
+ 5. Image Processing
+"""
+
+# installation of numpy
+!pip install numpy
+
+#importing numpy
+import numpy as np
+
+# creating different dimensional arrays
+#1-D Array
+ar_1d=np.array([10,20,30,40,50])
+print(ar_1d)
+# 2-D Array
+ar_2d=np.array([[10,20,30],[40,50,60],[70,80,90]])
+print(ar_2d)
+# Multi-dimensional array
+# Matrix
+matrix=np.array([[2,4,6],[8,10,12]])
+print(matrix)
+
+# Creating arrays from python lists
+arr=np.array([1,2,3,4])
+print(arr)
+
+# Creating arrays with default values
+# with zero as default value
+zeros_array= np.zeros(3)
+print(zeros_array)
+# with one as default value
+ones_array= np.ones((2,3))
+print(ones_array)
+# with empty as default value
+empty_array= np.empty(3)
+print(empty_array)
+# setting custom value as default
+#syntax: full (shape,value)
+custom_array= np.full((3,5),7)
+print(custom_array)
+
+#creating sequences of numbers in numpy
+ #arange() is used
+ #arange(start,stop,step)
+arr=np.arange(1,10,2)
+print(arr)
+
+# creating Identity matrices
+identity=np.eye(3)
+print(identity)
+
+"""**Chapter-2: Array Properties & Operations**
+
+2.1 Shape,Size and Type (Checking)
+
+Helps in understanding structure of the array or dimension of the array.
+"""
+
+#1.Shape: Used when working with multi-dimensional data.
+# Returns layers,rows and columns.
+import numpy as np
+
+arr_2d=np.array([[1,2,3],
+                 [4,5,6]])
+print(arr_2d.shape)
+
+#2.Size: Returns total number of elements in array.
+arr=np.array([[10,20,30],[40,50,60]])
+print(arr.size)
+
+#3.ndim: returns number of dimensions
+array_1d=np.array([1,2,3])
+array_2d=np.array([[1,2,3],[4,5,6]])
+array_3d=np.array([[[1,2,3],[4,5,6]],[[7,8,9],[10,11,12]]])
+
+print(array_1d.ndim)
+print(array_2d.ndim)
+print(array_3d.ndim)
+
+#4.dtype: Returns datatype of elements
+ar= np.array([10,20,30.5,40])
+print(ar.dtype)
+
+"""2.2 Changing
+
+To convert one type of data stored in array to another type.
+"""
+
+#1. .astype()
+# syntax: .astype(new data type to which the data needs to be converted).
+# Like: int,float and string.
+a=np.array([1.2,2.5,3.8])
+int_a =a.astype(int)
+
+print(int_a)
+print(int_a.dtype)
+
+"""2.3 Mathematical Operations
+
+Operator                   Example
+                          
+1.   "+"   : arr+2
+2.   "-"   : arr-6
+3.   "*"   : arr*4
+4.   "/"   : arr/2
+5.   "** " :arr**4
+6.   "//"  :arr//3
+7.   "%"   :arr%5
+
+"""
+
+# mathematical operators
+b=np.array([10,20,30])
+
+print(b+5)
+print(b*3)
+print(b**2)
+
+"""2.4 Aggregation Function
+
+Used to provide summary of the data
+"""
+
+#1. sum                : np.sum(array_name)
+#2. mean               : np.mean(array_name)
+#3. min                : min(array_name)
+#4. max                : max(array_name)
+#5. standard deviation : np.std(array_name)
+#6. Variance           : np.var(array_name)
+
+c=np.array([10,20,30,40,50])
+print("Sum:" ,np.sum(c))
+print("Mean:" ,np.mean(c))
+print("Standard Deviation: ",np.std(c))
+print("Variance: ",np.var(c))
+print("Minimum: " ,min(c))
+print("Maximum: ",max(c))
+
+"""**Chapter-3: Indexing & Slicing**
+
+Numpy also uses zero-based indexing only.
+"""
+
+#3.1 Accessing elements of array.
+import numpy as np
+arr=np.array([10,20,30,40,50]) #1-d array
+print(arr[0])
+print(arr[-1])
+arr_2d=np.array([[10,20,30],[40,50,60]]) #2-d array
+print(arr_2d[0,1]) #row,coloumn for 2d array
+print(arr_2d[1,2])
+array_3d=np.array([[[10,20,30],[40,50,160]],[[70,80,90],[100,110,120]]])
+print(array_3d[0,1,2])
+
+#3.2 Slicing the array.
+#Syntax: arrayname[start:stop:step]
+larr=np.array([10,20,30,40,50,60,70,80,90,100])
+print(larr[1:])
+print(larr[:])
+print(larr[::-1])
+print(larr[1:8:2])
+print(larr[-1::-2])
+print(larr[0:])
+
+#3.3 Fancy Indexing: Selecting multiple elements at once
+#Passing all indices we need as a single list
+barr=np.array([10,20,30,40,50,60,70,80,90,100])
+print(barr[[0,3,8,9]])
+
+#Filtering: Selecting elements based on a condition
+marr=np.array([10,20,30,40,50,60,70,80,90,100])
+print(marr[marr>50])
+print(marr[marr%2==0])
+
+"""**Chapter-4: Reshaping & Manipulation**
+
+**4.1 Reshaping**
+
+Changing dimension of the array without modifying the data.The total number of elements in the array will always be the same only.
+Reshaping never creates a copy of hte original array,it just creates a view.
+"""
+
+# reshaping
+"""syntax: .reshape(rows,columns) specifying the new shape
+here.Possible only if dimensions match."""
+import numpy as np
+arrayy=np.array([10,20,30,40,50,60])
+reshaped_arr=arrayy.reshape(2,3)
+print(reshaped_arr)
+
+"""**4.2: Flattening**
+Used when converting multi-dimensional array to 1-D array.
+"""
+
+# .ravel() and .flatten() two functions for 1-D conversion.
+""".ravel() -> views for the original array no modification
+.flatten() -> creates a copy of the original array with
+specified dimensions"""
+import numpy as np
+array_2d = np.array([[1,2,3],[4,5,6]])
+print(array_2d.ravel())
+print(array_2d.flatten())
+print(array_2d)
+
+"""**Chapter-5: Array Modifications**
+
+**Modifications in an existing array**
+
+We need to add,remove,stack or merge/split the array as the data stored in the array keeps evolivng with time.The size of array once made is fixed,so if we want to make any modifications,we need to make a new array for the same.
+"""
+
+#5.1: Adding an element,we function named insert for it.
+"""Syntax: np.insert(array,index,value,axis)
+array: original array that need to be modified.
+index: the index at which we want to insert that element.
+value: the specific value to be inserted.
+axis: If none,it is inserted in a flat array of 1-D.
+whereas for 2d,if axis=0,row-wise else axis=1,column-wise."""
+import numpy as np
+#insert in 1-d
+
+arr=np.array([10,20,30,40,50])
+print(arr)
+new_arr=np.insert(arr,2,100,axis=0)
+print(new_arr)
+
+#insert in 2-d
+arr_2d=np.array([[10,20,30],[40,50,60]])
+print(arr_2d)
+new_arr_2d=np.insert(arr_2d,1,[6,7,8],axis=0)
+print(new_arr_2d)
+
+# append function,adding an element to the end.
+arr=np.array([10,20,30])
+new_arr=np.append(arr,[40,50,60,70])
+print(new_arr)
+
+#Concatination
+"""Syntax: np.concatenate((array1,array2),axis=0)
+axis=0: vertical stacking
+axis=1: horizontal stacking
+"""
+arr1=np.array([1,2,3])
+arr2=np.array([4,5,6])
+
+new_arr=np.concatenate((arr1,arr2),axis=0)
+print(new_arr)
+
+#5.2 Removing elements of array,using delete functon.
+"""Syntax: np.delete(array,index,axis)
+array: on which we need to perform operations
+index: element at that index will be deleted
+axis: If none working on flat array"""
+import numpy as np
+#1-d deletion
+arr=np.array([10,20,30,40,50])
+new_arr=np.delete(arr,2,axis=0)
+print(new_arr)
+#2-d deletion
+arr_2d=np.array([[1,2,3],[4,5,6]])
+new_arr_2d=np.delete(arr_2d,1,axis=0) #removing 2 row of array
+print(new_arr_2d)
+
+#5.3 Stacking & Splitting
+""" Stacking means combining the arrays horizontally or
+vertically.
+Splitting means dividing the array into multiple arrays.
+We can use vstack() for vertical stacking and hstack() for
+horizontal stacking."""
+#Stacking
+arr1=np.array([1,2,3])
+arr2=np.array([4,5,6])
+print(np.vstack((arr1,arr2))) #vertically,number of coloumns remain same
+print(np.hstack((arr1,arr2))) #horizontally,number of rows remain same.
+
+#splitting
+"""functions for splitting:
+1. np.split(): divides array in equal parts
+2. np.hsplit() : horizontally splits array
+3. np.vsplit(): vertically splits array
+"""
+arr=np.array([1,2,3,4,5,6,7,8,9,10])
+print(np.split(arr,2)) # 2 signifies the parts we need to divide the array in.
+
+"""**Chapter-6: Broadcasting & Vectorization**
+
+**Broadasting**
+
+It is used when we need to perform a single operation on the complete large datasets,without using loops.Broadcasting is used to implement vectorization.
+Broadcasting is basically the adjustment done in shape of the array to perform operations.
+"""
+
+import numpy as np
+prices=np.array([10,20,30,40,50])
+discount=20 #20% discount
+
+final_prices=prices-(prices*discount/100)
+print(final_prices)
+
+"""**How numpy handle arrays of different shapes: **
+
+1. Matching Dimension: For performing operations related to two arrays,both of them should be dimensionally compatible.
+
+2. Expanding Single Elements:
+   If there is only one single element it is increased to match the bigger dimension.
+
+3. Error for incompatible shapes:
+   when dimensions cannot be matched.
+
+"""
+
+# single element getting expanded.
+import numpy as np
+arr=np.array([10,20,30,40,50,60])
+result=arr*2
+print(result)
+#1-D to 2-D
+matrix=np.array([[1,2,3],[4,5,6]]) #2x3 matrix
+vector=np.array([10,20,30]) # this will be converted to (2,3)
+result=matrix+vector
+print(result)
+
+"""**Vectorization:**
+not using any comprehensions,just using simple operation on every element.It is a concept.Used on matrices.
+"""
+
+arr1=np.array([1,2,3,4,5])
+arr2=np.array([6,7,8,9,10])
+result=arr1+arr2
+print(result)
+
+"""**Chapter-7: Handling Missing Values**
+
+Missing values can influence the result we want in a negative way.So,we need to handle them.
+
+**How Python can help us in handling missing values?**
+
+It has 3 buit-in functions for the same.
+1. np.isnan(): Detect missing values.
+2. np.nan_to_num(): Replacing nan with a specified number.
+3. np.isinf(): Used to find infinte values in a any column or row.
+NaN: not a number.
+
+"""
+
+# examples
+"""1. np.isnan():
+Detect missing values.
+2. np.nan_to_num():
+Replacing nan with a specified number.
+3. np.isinf():
+Used to find infinte values in a any column or row."""
+
+import numpy as np
+""" 1.Syntax for isnan():np.isnan(array)"""
+arr=np.array([1,2,3,np.nan,5,6,7,np.nan])
+print(np.isnan(arr))
+""" NaN values can never be compared with each other.
+np.nan()==np.nan() will return false."""
+
+"""2.Syntax for nan_to_num():
+np.nan_to_num(array,nan=value that we need at place of nan )
+Defualt number is zero."""
+arr=np.array([1,2,3,np.nan,5,6,7,np.nan])
+print(np.nan_to_num(arr,nan=1))
+
+"""3.Syntax for isinf():
+np.isinf(array)"""
+arr=np.array([1,2,3,np.inf,5,6,7,np.inf,-np.inf])
+print(np.isinf(arr))
+
+#Replacing finite number with infinite number.
+cleaned_arr=np.nan_to_num(arr,posinf=1000, neginf=-1000)
+print(cleaned_arr)
+
+"""**Project**
+
+Dataset: Employee Dataset
+"""
+
+# Step-1: Importing necessary the required libraries
+import pandas as pd
+import numpy as np
+
+# Step-2: Loading the dataset and understanding it's structure
+df=pd.read_csv('/content/Employees_raw_Data.csv.csv')
+print(df.head())
+
+import numpy as np
+# Step-3: Checking the missing values and filling each column.
+print("Missing values in each column")
+print(df.isnull().sum())
+
+ # Removing missing values
+df['department'] = df['department'].fillna(df['department'].mode()[0])
+df['salary'] = df['salary'].fillna(df['salary'].mean())
+df['age'] = df['age'].fillna(df['age'].median())
+df['performance_rating'] = df['performance_rating'].fillna(df['performance_rating'].mode()[0])
+df['remote_work'] = df['remote_work'].fillna(df['remote_work'].mode()[0])
+print(df.isnull().sum())
+
+#Removing infinite value by converting them to nan
+df.replace([np.inf, -np.inf], np.nan, inplace=True)
+
+# Fill remaining NaN values in numeric columns with their respective means
+numeric_cols = df.select_dtypes(include=np.number).columns
+for col in numeric_cols:
+    df[col] = df[col].fillna(df[col].mean())
+
+print(df.isnull().sum())
+
+#Removing Duplicates
+df.drop_duplicates(inplace=True)
+print(df.duplicated().sum())
+
+#Replacing negative salaries
+df['salary'] = df['salary'].apply(lambda x: abs(x))
+print(df.head())
+salary_mean=df['salary'].mean()
+print("Mean: ",salary_mean)
+salary_std=df['salary'].std()
+print("Std: ",salary_std)
+lower_bound=salary_mean - (3*salary_std)
+upper_bound=salary_mean + (3*salary_std)
+df=df[(df['salary']>=lower_bound) & (df['salary']<=upper_bound)]
+print(df.head())
+
+#Saving the cleaned data
+df.to_csv('cleaned_employee_data.csv',index=False)
+
+print("Data Cleaning Completed! Saved as cleaned_employee_data.csv")
+
